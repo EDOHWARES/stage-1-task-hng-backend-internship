@@ -8,7 +8,8 @@
   "description": "setting up a basic web server and exposing an endpoint",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit "
+    "test": "echo \"Error: no test specified\" && exit ",
+      "start": "node app.js"
   },
   "repository": {
     "type": "git",
