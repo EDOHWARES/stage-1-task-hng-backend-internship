@@ -26,6 +26,10 @@ async function getTemperature(city) {
     }
 }
 
+app.get('/', (req, res) => {
+    res.send('Welcome to "Edoh Emmanuel" Geolocation and Weather API task result. Use the /api/hello endpoint.');
+  });
+
 app.get('/api/hello', async (req, res) => {
     const visitorName = req.query.visitor_name || 'Guest';
     const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
