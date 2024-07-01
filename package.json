@@ -12,8 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/EDOHWARES/stage-1-task-hng-backend-internship"
+    "url": "git+https://github.com/EDOHWARES/stage-1-task-hng-backend-internship.git"
   },
   "author": "EDOHWARES",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {},
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/EDOHWARES/stage-1-task-hng-backend-internship/issues"
+  },
+  "homepage": "https://github.com/EDOHWARES/stage-1-task-hng-backend-internship#readme"
 }
