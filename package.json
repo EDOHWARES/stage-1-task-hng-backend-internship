@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "axios": "^1.7.2",
+    "express": "^4.19.2"
+  },
+  "name": "stage-1-hng-backend-track",
+  "version": "1.0.0",
+  "description": "setting up a basic web server and exposing an endpoint",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git init"
+  },
+  "author": "EDOHWARES",
+  "license": "ISC"
+}
