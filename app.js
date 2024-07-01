@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
             <h1>Welcome to the Geolocation and Weather API</h1>
             <h4>Intern Name: Edoh Emmanuel Gideon</h4>
             <h4>Email: edohemmanuel082@gmail.com</h4>
-            <p>Use the <code>/api/hello</code> endpoint to get your geolocation and weather information.</p>
+            <p>Use the <code>/api/hello/?visitor_name=yourName</code> endpoint to get your geolocation and weather information.</p>
           </div>
         </body>
         </html>
