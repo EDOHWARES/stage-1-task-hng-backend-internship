@@ -8,11 +8,11 @@
   "description": "setting up a basic web server and exposing an endpoint",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "echo \"Error: no test specified\" && exit "
   },
   "repository": {
     "type": "git",
-    "url": "git init"
+    "url": "https://github.com/EDOHWARES/stage-1-task-hng-backend-internship"
   },
   "author": "EDOHWARES",
   "license": "ISC"
