@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/hello', async (req, res) => {
     const client_ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const visitor_name = req.query.visitor_name || 'Guest';
+    const visitor_name = req.query.visitor_name || 'Mark';
 
     const apiKey = '8adfe75094344d2c9f1120543231107';
     const baseUrl = `http://api.weatherapi.com/v1`;
