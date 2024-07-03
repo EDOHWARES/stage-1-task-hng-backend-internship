@@ -3,29 +3,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const axios = require('axios');
 
-async function getLocation(ip) {
-    const url = `http://ipwhois.app/json/${ip}`;
-    try {
-        const response = await axios.get(url);
-        return response.data.city;
-    } catch (error) {
-        console.error('Error Fetching Location: ', error);
-        return 'Unknown';
-    }
-}
-
-async function getTemperature(city) {
-    const apiKey = '0fd2300c8e28aff4c85bca10407cc626';
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    try {
-        const response = await axios.get(url);
-        return response.data.main.temp;
-    } catch (error) {
-        console.error('Error Fetching Weather: ', error)
-        return 0;
-    }
-}
-
 app.get('/', (req, res) => {
     res.send(`
         <!DOCTYPE html>
@@ -43,7 +20,7 @@ app.get('/', (req, res) => {
             <h1>Welcome to the Geolocation and Weather API</h1>
             <h4>Intern Name: Edoh Emmanuel Gideon</h4>
             <h4>Email: edohemmanuel082@gmail.com</h4>
-            <p>Use the <code>/api/hello/?visitor_name=yourName</code> endpoint to get your geolocation and weather information.</p>
+            <p>Use the <code>/api/hello?visitor_name=yourName</code> endpoint to get your geolocation and weather information.</p>
           </div>
         </body>
         </html>
@@ -51,16 +28,29 @@ app.get('/', (req, res) => {
   });
 
 app.get('/api/hello', async (req, res) => {
-    const visitorName = req.query.visitor_name || 'Guest';
-    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const location = await getLocation(clientIp);
-    const temperature = await getTemperature(location);
+    const client_ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const visitor_name = req.query.visitor_name || 'Guest';
 
-    res.json({
-        clientIp: clientIp,
-        location: location,
-        greeting: `Hello, ${visitorName}!, the temperature is ${temperature} degree Celcius in ${location}`
-    });
+    const apiKey = '8adfe75094344d2c9f1120543231107';
+    const baseUrl = `http://api.weatherapi.com/v1`;
+    const url = `${baseUrl}/current.json?key=${apiKey}&q=${client_ip}`;
+
+    try {
+        const response = await axios.get(url);
+        const data  = response.data;
+
+        const location = data.location.name;
+        const temp = data.current.temp_c;
+
+        res.json({
+            client_ip: client_ip,
+            location: location,
+            greeting: `Hello, ${visitor_name}!, the temperature is ${temp} degree Celcius in ${location}`
+        });
+
+    } catch (error) {
+        console.error('Error Encountered: ', error);
+    }
 });
 
 app.listen(port, () => {
